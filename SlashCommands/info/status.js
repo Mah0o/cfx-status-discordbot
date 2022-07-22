@@ -15,10 +15,11 @@ module.exports = {
      */
     run: async (client, interaction, args) => {
 
-        const e0 = new EmbedBuilder().setColor("#8B0000").setDescription("Erreur | Vous n'avez pas les permissions requises.")
-        const e1 = new EmbedBuilder().setColor("#8B0000").setDescription("Erreur | Veuillez vérifier le fichier \`config\`.")
-        if (!interaction.member.roles.cache.has(config.staffRole)) return interaction.followUp({ embeds: [e0] })   //verif membre role
-        if(!config.serverID || !config.serverIP || !config.staffRole ) return interaction.followUp({ embeds: [e1] })   //verif config.js
+        const e0 = new EmbedBuilder().setColor("#8B0000").setDescription("Erreur | Veuillez vérifier le fichier \`config\`.")
+        const e1 = new EmbedBuilder().setColor("#8B0000").setDescription("Erreur | Vous n'avez pas les permissions requises.")
+        if(!config.serverID || !config.serverIP || !config.staffRole ) return interaction.followUp({ embeds: [e0] })   //verif config.js
+        if (!interaction.member.roles.cache.has(config.staffRole)) return interaction.followUp({ embeds: [e1] })   //verif membre role
+        
 
         const server = await cfx.fetchServer(config.serverID)
 
