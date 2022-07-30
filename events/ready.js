@@ -15,7 +15,7 @@ client.on("ready", () => {
         const attVerif = true
 
         let etat = "❌ Serveur Offline"
-        if(attVerif == true) { etat = `${server.playersCount} / ${server.maxPlayers}`}
+        if(attVerif === true) { etat = `${server.playersCount} / ${server.maxPlayers}`}
 
         await client.user.setActivity(`${etat}`, {type: "WATCHING"})
     }, (config.actuStatusBot * 1000))
@@ -33,10 +33,10 @@ client.on("ready", () => {
 
             let etat = true
 
-            if(etat == true) {
+            if(etat === true) {
                 let pOnline = ""
                 const listPlayer = server.players
-                if(Object.keys(listPlayer).length === 0 == true) {pOnline = "Aucun Joueur Connecté"} else {for(let p of listPlayer) {pOnline += `➔ \`${p.name}\`\n`}}
+                if(Object.keys(listPlayer).length === 0) {pOnline = "Aucun Joueur Connecté"} else {for(let p of listPlayer) {pOnline += `➔ \`${p.name}\`\n`}}
 
                 const e1 = new EmbedBuilder()
                     .setTitle(`${server.projectName}`)
@@ -56,7 +56,7 @@ client.on("ready", () => {
                fs.writeFile("../config.json", JSON.stringify(client.db, null, 2), (err) => {if (err) return console.log(err)})
             }
 
-            if(etat == false) {
+            if(etat === false) {
                 const e1 = new EmbedBuilder()
                     .setTitle(`${server.projectName}`)
                     .setColor("#FF0000")
@@ -76,10 +76,10 @@ client.on("ready", () => {
             const channel = client.channels.cache.get(config.statusChannel)
             let message = await channel.messages.fetch(config.popMessage[1])
 
-            if(etat == true) {
+            if(etat === true) {
                 let pOnline = ""
                 const listPlayer = server.players
-                if(Object.keys(listPlayer).length === 0 == true) {pOnline = "Aucun Joueur Connecté"} else {for(let p of listPlayer) {pOnline += `➔ \`${p.name}\`\n`}}
+                if(Object.keys(listPlayer).length === 0) {pOnline = "Aucun Joueur Connecté"} else {for(let p of listPlayer) {pOnline += `➔ \`${p.name}\`\n`}}
 
                 const e1 = new EmbedBuilder()
                     .setTitle(`${server.projectName}`)
@@ -96,7 +96,7 @@ client.on("ready", () => {
                 message.edit({embeds: [e1]})
             }
 
-            if(etat == false) {
+            if(etat === false) {
                 const e1 = new EmbedBuilder()
                     .setTitle(`${server.projectName}`)
                     .setColor("#FF0000")
