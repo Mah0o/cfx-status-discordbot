@@ -53,7 +53,8 @@ client.on("ready", () => {
                let msg = await channel.send({embeds: [e1]})
                config.popMessage[0] = true
                config.popMessage[1] = msg.id
-               fs.writeFile("../config.json", JSON.stringify(client.db, null, 2), (err) => {if (err) return console.log(err)})
+               fs.writeFile("./config.json", JSON.stringify(client.db, null, 2), (err) => {if (err) return console.log(err)})
+
             }
 
             if(etat === false) {
@@ -67,7 +68,7 @@ client.on("ready", () => {
 
                 config.popMessage[0] = true
                 config.popMessage[1] = msg.id
-                fs.writeFile("../config.json", JSON.stringify(client.db, null, 2), (err) => {if (err) return console.log(err)})
+                fs.writeFile("./config.json", JSON.stringify(client.db, null, 2), (err) => {if (err) return console.log(err)})
             }
 
 
