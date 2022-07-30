@@ -12,9 +12,8 @@ module.exports = {
      *
      * @param {Client} client
      * @param {CommandInteraction} interaction
-     * @param {String[]} args
      */
-    run: async (client, interaction, args) => {
+    run: async (client, interaction) => {
 
         const e0 = new EmbedBuilder().setColor("#8B0000").setDescription("Erreur | Veuillez vérifier le fichier \`config\`.")
         const e1 = new EmbedBuilder().setColor("#8B0000").setDescription("Erreur | Vous n'avez pas les permissions requises.")
@@ -25,7 +24,7 @@ module.exports = {
 
             let pOnline = ""
             const listPlayer = server.players
-            if(Object.keys(listPlayer).length === 0 == true) {pOnline = "Aucun Joueur Connecté"} else {listPlayer.map(e => {pOnline += `➔ \`${e.name}\`\n`})}
+            if(Object.keys(listPlayer).length === 0) {pOnline = "Aucun Joueur Connecté"} else {listPlayer.map(e => {pOnline += `➔ \`${e.name}\`\n`})}
 
             const e2 = new EmbedBuilder()
                 .setTitle(`${server.projectName}`)
