@@ -24,7 +24,7 @@ module.exports = {
 
             let pOnline = ""
             const listPlayer = server.players
-            if(Object.keys(listPlayer).length === 0) {pOnline = "Aucun Joueur Connecté"} else {listPlayer.map(e => {pOnline += `➔ \`${e.name}\`\n`})}
+            if(listPlayer.length === 0) {pOnline = "Aucun Joueur Connecté"} else {listPlayer.map(e => {pOnline += `➔ \`${e.name}\`\n`})}
 
             const e2 = new EmbedBuilder()
                 .setTitle(`${server.projectName}`)
