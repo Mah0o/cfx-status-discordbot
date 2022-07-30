@@ -36,7 +36,7 @@ client.on("ready", () => {
             if(etat === true) {
                 let pOnline = ""
                 const listPlayer = server.players
-                if(listPlayer.length === 0) {pOnline = "Aucun Joueur Connecté"} else {for(let p of listPlayer) {pOnline += `➔ \`${p.name}\`\n`}}
+                if(listPlayer.length === 0) {pOnline = "Aucun Joueur Connecté"} else {listPlayer.map(e => {pOnline += `➔ \`${e.name}\`\n`})}
 
                 const e1 = new EmbedBuilder()
                     .setTitle(`${server.projectName}`)
@@ -80,7 +80,7 @@ client.on("ready", () => {
             if(etat === true) {
                 let pOnline = ""
                 const listPlayer = server.players
-                if(listPlayer.length === 0) {pOnline = "Aucun Joueur Connecté"} else {for(let p of listPlayer) {pOnline += `➔ \`${p.name}\`\n`}}
+                if(listPlayer.length === 0) {pOnline = "Aucun Joueur Connecté"} else {listPlayer.map(e => {pOnline += `➔ \`${e.name}\`\n`})}
 
                 const e1 = new EmbedBuilder()
                     .setTitle(`${server.projectName}`)
