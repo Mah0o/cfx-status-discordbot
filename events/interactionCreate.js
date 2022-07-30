@@ -8,7 +8,7 @@ client.on("interactionCreate", async (interaction) => {
 
         const cmd = client.slashCommands.get(interaction.commandName);
         if (!cmd)
-            return interaction.followUp({ content: "An error has occu#FF0000 " });
+            return interaction.followUp({ content: "An error has occured. " });
 
         const args = [];
 
