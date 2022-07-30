@@ -1,5 +1,5 @@
 const { Client, CommandInteraction, EmbedBuilder, ApplicationCommandType } = require("discord.js");
-const config = require("../../config")
+const config = require("../../config.json")
 const cfx = require("cfx-api");
 const { PermissionsBitField } = require('discord.js');
 
@@ -18,7 +18,7 @@ module.exports = {
 
         const e0 = new EmbedBuilder().setColor("#8B0000").setDescription("Erreur | Veuillez vérifier le fichier \`config\`.")
         const e1 = new EmbedBuilder().setColor("#8B0000").setDescription("Erreur | Vous n'avez pas les permissions requises.")
-        if(!config.serverID || !config.serverIP || !config.staffRole ) return interaction.followUp({ embeds: [e0] })   //verif config.js
+        if(!config.serverID || !config.serverIP || !config.staffRole ) return interaction.followUp({ embeds: [e0] })   //verif config.json
         if(interaction.member.permissions.has(PermissionsBitField.Flags.Administrator) || interaction.member.roles.cache.has(config.staffRole)) {
 
             const server = await cfx.fetchServer(config.serverID)

@@ -1,7 +1,7 @@
 const { glob } = require("glob");
 const { promisify } = require("util");
 const { Client } = require("discord.js");
-const config = require("../config");
+const config = require("../config.json");
 
 const globPromise = promisify(glob);
 
