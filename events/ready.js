@@ -22,20 +22,16 @@ client.on("ready", () => {
     ////FIN STATUS BOT////
 
     ////DEBUT MESSAGE STATUS////
-
-
     setInterval(async function () {
         const server = await cfx.fetchServer(config.serverID)
-        let etat = true
+        const channel = client.channels.cache.get(config.statusChannel)
         let message_pop = config.popMessage[0]
+        let etat = true
+        let pOnline = ""
+        const listPlayer = server.players
+
         if(message_pop === false) {
-            const channel = client.channels.cache.get(config.statusChannel)
-
-            let etat = true
-
             if(etat === true) {
-                let pOnline = ""
-                const listPlayer = server.players
                 if(listPlayer.length === 0) {pOnline = "Aucun Joueur Connecté"} else {listPlayer.map(e => {pOnline += `➔ \`${e.name}\`\n`})}
 
                 const e1 = new EmbedBuilder()
@@ -51,10 +47,9 @@ client.on("ready", () => {
                     .setTimestamp()
 
                let msg = await channel.send({embeds: [e1]})
+
                config.popMessage[0] = true
                config.popMessage[1] = msg.id
-               fs.writeFile("./config.json", JSON.stringify(client.db, null, 2), (err) => {if (err) return console.log(err)})
-
             }
 
             if(etat === false) {
@@ -68,18 +63,15 @@ client.on("ready", () => {
 
                 config.popMessage[0] = true
                 config.popMessage[1] = msg.id
-                fs.writeFile("./config.json", JSON.stringify(client.db, null, 2), (err) => {if (err) return console.log(err)})
             }
 
+            fs.writeFile("./config.json", JSON.stringify(client.db, null, 2), (err) => {if (err) return console.log(err)})
 
 
         }else {
-            const channel = client.channels.cache.get(config.statusChannel)
             let message = await channel.messages.fetch(config.popMessage[1])
 
             if(etat === true) {
-                let pOnline = ""
-                const listPlayer = server.players
                 if(listPlayer.length === 0) {pOnline = "Aucun Joueur Connecté"} else {listPlayer.map(e => {pOnline += `➔ \`${e.name}\`\n`})}
 
                 const e1 = new EmbedBuilder()
@@ -104,12 +96,10 @@ client.on("ready", () => {
                     .setDescription("Le serveur est actuellement \`❌ Offline\` !")
                     .setTimestamp()
 
-
                 message.edit({embeds: [e1]})
 
+                }
             }
-        }
-
         },(config.actuStatusMSG * 1000))
 
 
